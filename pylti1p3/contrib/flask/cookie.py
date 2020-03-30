@@ -33,6 +33,7 @@ class FlaskCookieService(CookieService):
                 secure=self._request.is_secure(),
                 path='/',
                 httponly=True,
+                SameSite=None,
             )
 
             werkzeug_version = int(werkzeug.__version__.split('.')[0])
