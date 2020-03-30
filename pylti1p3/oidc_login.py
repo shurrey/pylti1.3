@@ -1,5 +1,6 @@
 import uuid
 from abc import ABCMeta, abstractmethod
+from urllib.parse import urlparse
 try:
     from urllib import urlencode
 except ImportError:
@@ -37,6 +38,11 @@ class OIDCLogin(object):
         if not launch_url:
             raise OIDCException("No launch URL configured")
 
+        parsed_url = urlparse(launch_url)
+        parsed_url = parsed_url._replace(scheme='https')
+
+        launch_url = parsed_url.geturl() 
+        
         # validate request
         registration = self.validate_oidc_login()
 
