@@ -44,8 +44,9 @@ class OIDCLogin(object):
 
         # generate state
         # set cookie (short lived)
+        name = 'state-' + self._get_uuid()
         state = 'state-' + self._get_uuid() + "; SameSite=None; Secure"
-        self._cookie_service.set_cookie(state, state)
+        self._cookie_service.set_cookie(name, state)
 
         # generate nonce
         nonce = self._get_uuid()
