@@ -7,9 +7,9 @@ class ResourceMessageValidator(MessageValidatorAbstract):
     def validate(self, jwt_body):
         self.run_common_validators(jwt_body)
 
-        id_val = jwt_body.get('https://purl.imsglobal.org/spec/lti/claim/resource_link', {}).get('id')
-        if not id_val:
-            raise LtiException('Missing Resource Link Id')
+        #id_val = jwt_body.get('https://purl.imsglobal.org/spec/lti/claim/resource_link', {}).get('id')
+        #if not id_val:
+        #    raise LtiException('Missing Resource Link Id')
 
         return True
 
